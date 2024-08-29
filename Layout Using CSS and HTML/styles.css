@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+header {
+  background-color: lawngreen;
+  min-height: 5rem;
+}
+
+.columns {
+  display: flex;
+  flex-grow: 1;
+}
+
+.left {
+  background-color: pink;
+  min-width: 5rem;
+}
+.mid {
+  background-color: red;
+  flex-grow: 1;
+}
+.right {
+  background-color: skyblue;
+  min-width: 5rem;
+}
+.footer {
+  background-color: gray;
+  min-height: 5rem;
+}
