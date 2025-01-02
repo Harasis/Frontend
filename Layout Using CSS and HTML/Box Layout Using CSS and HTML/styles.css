@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  min-height: 100vh;
+}
+
+.row1,
+.row3 {
+  display: flex;
+  justify-content: space-between;
+  background-color: beige;
+}
+
+.row2 {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  background-color: blanchedalmond;
+  align-items: center;
+}
+
+.box {
+  height: 10rem;
+  width: 10rem;
+  border: solid 4px black;
+}
