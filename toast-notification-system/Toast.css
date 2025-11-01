@@ -1,0 +1,132 @@
+/* CONTAINER POSITIONING - Fixed position container for all toasts */
+.toast-container {
+  position: fixed; /* Stay in viewport when scrolling */
+  z-index: 9999; /* Always on top of other elements */
+  display: flex; /* Flexible layout for stacking */
+  flex-direction: column; /* Stack toasts vertically */
+  gap: 8px; /* Space between toasts */
+}
+
+/* CORNER POSITIONS - Place container in different corners */
+.toast-container.top-left {
+  top: 16px;
+  left: 16px;
+}
+.toast-container.top-right {
+  top: 16px;
+  right: 16px;
+}
+.toast-container.bottom-left {
+  bottom: 16px;
+  left: 16px;
+  flex-direction: column-reverse; /* New toasts appear at bottom */
+}
+.toast-container.bottom-right {
+  bottom: 16px;
+  right: 16px;
+  flex-direction: column-reverse; /* New toasts appear at bottom */
+}
+
+/* INDIVIDUAL TOAST STYLING - Basic toast appearance */
+.toast {
+  padding: 12px 16px; /* Internal spacing */
+  border-radius: 6px; /* Rounded corners */
+  color: white; /* White text */
+  min-width: 250px; /* Minimum width */
+  display: flex; /* Layout for text + close button */
+  justify-content: space-between; /* Text left, button right */
+  align-items: center; /* Vertical center alignment */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Drop shadow */
+  opacity: 0; /* Hidden by default - shown by animation */
+}
+
+/* TOAST TYPES - Different colors for different message types */
+.toast.success {
+  background: #4caf50;
+} /* Green for success */
+.toast.error {
+  background: #f44336;
+} /* Red for errors */
+.toast.warning {
+  background: #ff9800;
+} /* Orange for warnings */
+.toast.info {
+  background: #2196f3;
+} /* Blue for info */
+
+/* ANIMATION KEYFRAMES - Define how animations work */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  } /* End: visible, no movement */
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  } /* Start: invisible, moved up */
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  } /* End: visible, no movement */
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  } /* Start: invisible, moved right */
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  } /* Start: invisible, small */
+  50% {
+    transform: scale(1.1);
+  } /* Middle: slightly bigger */
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  } /* End: visible, normal size */
+}
+
+/* ANIMATION CLASSES - Apply animations to toasts */
+.toast.fade {
+  animation: fadeIn 0.3s forwards;
+} /* Fade in animation */
+.toast.slide {
+  animation: slideIn 0.3s forwards;
+} /* Slide in animation */
+.toast.pop {
+  animation: popIn 0.4s forwards;
+} /* Pop in animation */
+
+/* LEFT POSITION SLIDE FIX - Make left toasts slide from left side */
+.toast-container.top-left .toast.slide,
+.toast-container.bottom-left .toast.slide {
+  animation-name: slideIn; /* Use same slideIn animation */
+  transform: translateX(
+    -100%
+  ); /* But start from left (-100%) instead of right */
+}
+
+/* CLOSE BUTTON - X button to manually close toast */
+.close-btn {
+  background: none; /* No background */
+  border: none; /* No border */
+  color: white; /* White X */
+  font-size: 18px; /* Bigger X */
+  cursor: pointer; /* Show clickable cursor */
+}
+
+/* APP STYLES - Basic app layout */
+.app {
+  padding: 2rem; /* Space around app content */
+  font-family: sans-serif; /* Clean font */
+}
+.buttons button {
+  margin: 8px; /* Space between buttons */
+  padding: 8px 16px; /* Button internal spacing */
+  cursor: pointer; /* Show clickable cursor */
+}
