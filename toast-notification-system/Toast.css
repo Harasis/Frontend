@@ -8,51 +8,48 @@
 }
 
 /* CORNER POSITIONS - Place container in different corners */
-.toast-container.top-left {
-  top: 16px;
-  left: 16px;
-}
 .toast-container.top-right {
   top: 16px;
   right: 16px;
 }
-.toast-container.bottom-left {
-  bottom: 16px;
+.toast-container.top-left {
+  top: 16px;
   left: 16px;
-  flex-direction: column-reverse; /* New toasts appear at bottom */
 }
 .toast-container.bottom-right {
-  bottom: 16px;
   right: 16px;
+  bottom: 16px;
+  flex-direction: column-reverse; /* New toasts appear at bottom */
+}
+.toast-container.bottom-left {
+  left: 16px;
+  bottom: 16px;
   flex-direction: column-reverse; /* New toasts appear at bottom */
 }
 
 /* INDIVIDUAL TOAST STYLING - Basic toast appearance */
 .toast {
+  border-radius: 6px;
+  color: white;
+  min-width: 250px;
   padding: 12px 16px; /* Internal spacing */
-  border-radius: 6px; /* Rounded corners */
-  color: white; /* White text */
-  min-width: 250px; /* Minimum width */
   display: flex; /* Layout for text + close button */
   justify-content: space-between; /* Text left, button right */
-  align-items: center; /* Vertical center alignment */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Drop shadow */
-  opacity: 0; /* Hidden by default - shown by animation */
 }
 
-/* TOAST TYPES - Different colors for different message types */
+/* toast error pop */
 .toast.success {
-  background: #4caf50;
-} /* Green for success */
-.toast.error {
-  background: #f44336;
-} /* Red for errors */
-.toast.warning {
-  background: #ff9800;
-} /* Orange for warnings */
+  background-color: green;
+}
 .toast.info {
-  background: #2196f3;
-} /* Blue for info */
+  background-color: darkgoldenrod;
+}
+.toast.warning {
+  background-color: orange;
+}
+.toast.error {
+  background-color: red;
+}
 
 /* ANIMATION KEYFRAMES - Define how animations work */
 @keyframes fadeIn {
@@ -94,30 +91,12 @@
 /* ANIMATION CLASSES - Apply animations to toasts */
 .toast.fade {
   animation: fadeIn 0.3s forwards;
-} /* Fade in animation */
+}
+.toast.pop {
+  animation: popIn 0.3s forwards;
+}
 .toast.slide {
   animation: slideIn 0.3s forwards;
-} /* Slide in animation */
-.toast.pop {
-  animation: popIn 0.4s forwards;
-} /* Pop in animation */
-
-/* LEFT POSITION SLIDE FIX - Make left toasts slide from left side */
-.toast-container.top-left .toast.slide,
-.toast-container.bottom-left .toast.slide {
-  animation-name: slideIn; /* Use same slideIn animation */
-  transform: translateX(
-    -100%
-  ); /* But start from left (-100%) instead of right */
-}
-
-/* CLOSE BUTTON - X button to manually close toast */
-.close-btn {
-  background: none; /* No background */
-  border: none; /* No border */
-  color: white; /* White X */
-  font-size: 18px; /* Bigger X */
-  cursor: pointer; /* Show clickable cursor */
 }
 
 /* APP STYLES - Basic app layout */
