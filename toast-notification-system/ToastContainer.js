@@ -19,9 +19,9 @@ export default function ToastContainer() {
   addToastToState = setToasts;
 
   // REMOVE FUNCTION
-  const removeToast = (id) => {
-    setToasts(prev => prev.filter(toast => toast.id !== id));
-  };
+  function removeToast(id){
+        setToasts(prev => prev.filter(toast=> toast.id !== id))   // remove toasts whose id = id in the function
+    }
 
   // POSITION LOGIC
   const position = toasts[0]?.position || "top-right";
