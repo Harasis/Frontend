@@ -1,3 +1,17 @@
+// Flow:
+
+// External call: showToast({type: 'success', message: 'Done!'})
+// Add to state: Creates toast with ID, adds to array
+// Re-render: Component updates, shows new toast
+// Auto-remove: Toast expires or user clicks X
+// Clean up: Toast removed from array, disappears
+
+// In essence: A container that holds and manages all toast notifications with a simple external API.
+
+
+
+
+
 import React, { useState } from "react";
 import Toast from "./Toast";
 
