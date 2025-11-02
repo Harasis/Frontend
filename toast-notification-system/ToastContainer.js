@@ -20,11 +20,13 @@ export default function ToastContainer() {
 
   // REMOVE FUNCTION
   function removeToast(id){
-        setToasts(prev => prev.filter(toast=> toast.id !== id))   // remove toasts whose id = id in the function
+        // remove toasts whose id = id in the function
+        setToasts(prev => prev.filter(toast=> toast.id !== id))   
     }
 
   // POSITION LOGIC
-  const position = toasts[0]?.position || "top-right";
+  //Gets position from first toast in array (all toasts should have same position) If no toasts exist, defaults to "top-right"
+  const position = toasts[0]?.position || "top-right"; 
 
   return (
     <div className={`toast-container ${position}`}>
