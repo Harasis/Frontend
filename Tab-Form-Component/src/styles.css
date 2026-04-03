@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.heading-section {
+  display: flex;
+}
+
+.btn {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.tab-body {
+  border: 1px solid black;
+  height: 300px;
+  padding: 6px;
+}
+
+.profile-tabs {
+  padding: 5px;
+}
