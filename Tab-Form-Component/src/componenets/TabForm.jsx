@@ -22,6 +22,8 @@ function valid(email) {
 
 // Main component
 export default TabForm = () => {
+
+  
   // Default form data
   const defaultData = {
     name: "Harasis",
