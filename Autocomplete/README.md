@@ -1,17 +1,19 @@
-# 🔍 React Autocomplete Search (with Debouncing & Caching)
+# 🔍 React Autocomplete Search (Debouncing + Caching + Focus Control)
 
 ## 📌 Overview
 
-This project is a simple **Autocomplete Search UI** built using React.
-It fetches recipe suggestions from an API as the user types and includes optimizations like **debouncing** and **caching**.
+This project is a React-based **Autocomplete Search UI** that fetches recipe suggestions dynamically as the user types.
+
+It includes performance optimizations like **debouncing**, **caching**, and improved UX with **focus/blur control**.
 
 ---
 
 ## 🚀 Features
 
 * 🔎 Real-time search suggestions
-* ⏱️ Debounced API calls (reduces unnecessary requests)
-* 💾 In-memory caching (improves performance)
+* ⏱️ Debounced API calls (400ms delay)
+* 💾 In-memory caching for repeated queries
+* 👁️ Controlled dropdown visibility using focus/blur
 * ⚡ Fast and responsive UI
 * ❌ Handles empty input gracefully
 
@@ -21,18 +23,24 @@ It fetches recipe suggestions from an API as the user types and includes optimiz
 
 ### 1. Debouncing
 
-* API calls are delayed by **400ms**
-* Prevents excessive requests while typing
+* Prevents excessive API calls while typing
+* API triggers only after user pauses typing
 
 ### 2. Caching
 
-* Previously searched queries are stored
-* Avoids repeated API calls for same input
+* Stores previous search results
+* Avoids redundant API calls
 
-### 3. React Hooks
+### 3. Focus & Blur Handling
 
-* `useState` → manage state
-* `useEffect` → handle side effects (API calls)
+* `onFocus` → shows suggestions when input is active
+* `onBlur` → hides suggestions when user clicks outside
+* Improves UI cleanliness and usability
+
+### 4. React Hooks
+
+* `useState` → manage UI state
+* `useEffect` → handle debounced API calls
 
 ---
 
@@ -45,7 +53,7 @@ It fetches recipe suggestions from an API as the user types and includes optimiz
 
 ## 🛠️ Installation
 
-```bash
+```bash id="a1z92k"
 git clone <your-repo-url>
 cd <project-folder>
 npm install
@@ -56,7 +64,7 @@ npm start
 
 ## 📂 Project Structure
 
-```
+```id="k29x0p"
 src/
  ├── App.js
  ├── styles.css
@@ -67,38 +75,47 @@ src/
 
 ## ⚙️ How It Works
 
-1. User types in input box
-2. `useEffect` triggers after 400ms (debounce)
-3. Checks cache:
+1. User types in the input field
+2. After 400ms pause → API is triggered (debounce)
+3. Cache is checked:
 
    * ✅ If exists → use cached data
-   * ❌ Else → call API
-4. Results are displayed dynamically
+   * ❌ Else → fetch from API
+4. Results are displayed in dropdown
+5. Dropdown visibility:
+
+   * Focus → show
+   * Blur → hide
+
+---
+
+## ⚠️ Known Limitation
+
+* Clicking a suggestion may not work properly because `onBlur` fires before click
+  👉 Can be solved using `onMouseDown` instead of `onClick`
 
 ---
 
 ## 🚧 Possible Improvements
 
-* ⌨️ Keyboard navigation (arrow keys + enter)
+* ⌨️ Keyboard navigation (↑ ↓ Enter)
 * 🔍 Highlight matching text
-* ⏳ Loading spinner
-* 📱 Better mobile UI
-* 🌐 Error handling for API failures
+* ⏳ Loading indicator
+* 📱 Mobile responsiveness
+* 🌐 Error handling
 
 ---
 
 ## 📸 Demo
 
-Type something like:
+Try typing:
 
+```id="v8z3l1"
+pizza
 ```
-chicken
-```
-
-You’ll see instant suggestions.
 
 ---
 
 ## 📄 License
 
-This project is open-source and free to use.
+Free to use and modify.
