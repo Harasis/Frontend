@@ -12,6 +12,8 @@ export default function App() {
   // Format: { query: [results] }
   const [cache, setCache] = useState({});
 
+  const [showAutoComplete, setShowAutoComplete] = useState(false);
+
   // Function to fetch data from API or cache
   async function fetchData() {
     // If input is empty, clear results
@@ -64,10 +66,18 @@ export default function App() {
         className="search-box"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        // Triggered when input gains focus
+        // Used to show the autocomplete dropdown
+        // Improves UX by showing suggestions when user clicks back into input
+        onFocus={() => setShowAutoComplete(true)}
+        // Triggered when input loses focus
+        // Used to hide the dropdown when user clicks outside
+        // Prevents suggestions from staying visible unnecessarily
+        onBlur={() => setShowAutoComplete(false)}
       />
 
       {/* Show results only if input is not empty */}
-      {input?.length > 0 && (
+      {input?.length > 0 && showAutoComplete && (
         <div className="result-container">
           {results.length > 0 ? (
             results.map((r) => (
