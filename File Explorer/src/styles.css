@@ -1,0 +1,16 @@
+.App {
+  font-family: sans-serif;
+  text-align: left;
+}
+
+.structure {
+  padding: 15px;
+}
+
+.folder-name {
+  display: block;
+}
+
+.btn {
+  cursor: pointer;
+}
