@@ -1,0 +1,21 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar {
+  border: 1px solid black;
+  width: 600px;
+  display: block;
+}
+
+.progress {
+  display: block;
+  border: 0.5px solid black;
+}
